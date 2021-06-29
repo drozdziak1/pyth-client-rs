@@ -8,6 +8,7 @@ pub const PROD_ATTR_SIZE : usize = PROD_ACCT_SIZE - PROD_HDR_SIZE;
 
 // each account has its own type
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub enum AccountType
 {
   Unknown,
@@ -19,6 +20,7 @@ pub enum AccountType
 // aggregate and contributing prices are associated with a status
 // only Trading status is valid
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub enum PriceStatus
 {
   Unknown,
@@ -29,6 +31,7 @@ pub enum PriceStatus
 
 // ongoing coporate action event - still undergoing dev
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub enum CorpAction
 {
   NoCorpAct
@@ -36,6 +39,7 @@ pub enum CorpAction
 
 // different types of prices associated with a product
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub enum PriceType
 {
   Unknown,
@@ -44,6 +48,7 @@ pub enum PriceType
 
 // solana public key
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct AccKey
 {
   pub val: [u8;32]
@@ -51,6 +56,7 @@ pub struct AccKey
 
 // Mapping account structure
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Mapping
 {
   pub magic      : u32,        // pyth magic number
@@ -65,6 +71,7 @@ pub struct Mapping
 
 // Product account structure
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Product
 {
   pub magic      : u32,        // pyth magic number
@@ -77,6 +84,7 @@ pub struct Product
 
 // contributing or aggregate price component
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct PriceInfo
 {
   pub price      : i64,        // product price
@@ -88,6 +96,7 @@ pub struct PriceInfo
 
 // latest component price and price used in aggregate snapshot
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct PriceComp
 {
   pub publisher  : AccKey,     // key of contributing quoter
@@ -105,6 +114,7 @@ pub struct Ema
 
 // Price account structure
 #[repr(C)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Price
 {
   pub magic      : u32,        // pyth magic number
@@ -131,6 +141,7 @@ pub struct Price
   pub comp       : [PriceComp;32] // price components one per quoter
 }
 
+#[derive(Clone, Debug, Eq, PartialEq)]
 struct AccKeyU64
 {
   pub val: [u64;4]
